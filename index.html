@@ -5,132 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Box N Burn — Boxing • Spinning • Yoga</title>
   <meta name="description" content="Box N Burn — Intensieve bokstraining, energieke spinninglessen en herstellende yoga. Proefles beschikbaar!" />
-  <!-- Open Graph -->
   <meta property="og:title" content="Box N Burn — Boxing • Spinning • Yoga" />
   <meta property="og:description" content="Sluit je aan bij Box N Burn: professionele coaches, dynamische lessen en flexibele abonnementen." />
   <meta property="og:image" content="/assets/og-hero.jpg" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0f1220;
-      --card:rgba(255,255,255,0.03);
-      --accent:#ff4b4b;
-      --accent-2:#00cfff;
-      --accent-3:#ffcc00;
-      --text:#eef2fb;
-      --muted:#a3adc2;
-      --glass: rgba(255,255,255,0.04);
-      --radius:14px;
-      --max-width:1200px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;margin:0;background:radial-gradient(circle at 10% 10%, #172033 0%, var(--bg) 40%);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}
-
-    /* Utility */
-    .container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
-    .wrap{padding:100px 0}
-    h1,h2,h3{margin:0 0 12px}
-    p{margin:0 0 14px}
-    .muted{color:var(--muted)}
-    .btn{display:inline-flex;gap:12px;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;font-weight:700;border:none;cursor:pointer}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#061022;box-shadow:0 8px 30px rgba(0,0,0,0.45)}
-    .btn-ghost{background:transparent;border:2px solid rgba(255,255,255,0.06);color:var(--text)}
-
-    /* Header */
-    header{position:fixed;top:16px;left:0;right:0;z-index:1000;padding:12px 0}
-    .nav{backdrop-filter:blur(10px);background:linear-gradient(180deg, rgba(10,11,18,0.55), rgba(10,11,18,0.35));border-radius:16px;padding:10px 14px;margin:0 20px;display:flex;align-items:center;gap:20px}
-    .logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--accent)}
-    .logo svg{width:44px;height:44px}
-    nav ul{list-style:none;display:flex;gap:20px;margin-left:auto;align-items:center}
-    nav li{position:relative}
-    nav a{padding:8px 6px;border-radius:8px}
-    nav a:focus, nav a:hover{background:rgba(255,255,255,0.03)}
-
-    /* Mobile nav */
-    .hamburger{display:none;margin-left:auto;background:transparent;border:none;color:var(--text)}
-    @media(max-width:900px){
-      nav ul{display:none}
-      .hamburger{display:inline-flex}
-    }
-
-    /* Hero */
-    .hero{height:92vh;display:grid;place-items:center;position:relative;overflow:hidden;border-radius:18px;margin:40px 20px;padding:40px}
-    .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.35));pointer-events:none}
-    .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:30px;align-items:center;width:100%;max-width:var(--max-width)}
-    .hero-left{max-width:640px}
-    .kicker{display:inline-flex;align-items:center;gap:10px;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));color:var(--muted);font-weight:600}
-    .hero h1{font-size:48px;line-height:1.02;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .hero p{color:var(--muted);margin-top:12px}
-    .hero-ctas{margin-top:20px;display:flex;gap:12px;align-items:center}
-
-    .hero-right{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    .stats{display:flex;gap:12px;justify-content:space-between}
-    .stat{flex:1;text-align:center}
-    .stat h3{font-size:20px;color:var(--accent)}
-
-    @media(max-width:900px){
-      .hero-grid{grid-template-columns:1fr}
-      .hero{padding:24px}
-      .hero h1{font-size:32px}
-    }
-
-    /* Sections */
-    section{padding:60px 0}
-    section .section-head{text-align:center;margin-bottom:24px}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
-    .card{background:var(--card);padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.02);transition:transform .28s ease, box-shadow .28s ease}
-    .card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,0,0.5)}
-    .card svg{width:48px;height:48px}
-
-    @media(max-width:900px){.cards{grid-template-columns:1fr}}
-
-    /* Pricing */
-    .pricing{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-    .price-card{flex:1 1 260px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);position:relative}
-    .price-card.recommended{box-shadow:0 20px 50px rgba(0,0,0,0.6);transform:scale(1.03)}
-    .ribbon{position:absolute;top:12px;right:-28px;background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:8px 56px;transform:rotate(45deg);font-weight:800;color:#061022}
-    .price{font-size:28px;font-weight:800;color:var(--accent);margin:12px 0}
-
-    /* Schedule */
-    .schedule{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .slot{background:var(--glass);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
-    @media(max-width:900px){.schedule{grid-template-columns:1fr}}
-
-    /* Testimonials */
-    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .testimonial{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
-    @media(max-width:900px){.testimonials{grid-template-columns:1fr}}
-
-    /* FAQ */
-    .faq{max-width:900px;margin:0 auto;text-align:left}
-    .faq button{width:100%;text-align:left;padding:14px;border-radius:10px;background:var(--card);border:1px solid rgba(255,255,255,0.02)}
-
-    /* Contact */
-    .contact-grid{display:grid;grid-template-columns:1fr 420px;gap:20px}
-    .form input,.form textarea{width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text)}
-    .form label{display:block;margin-bottom:6px}
-    @media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
-
-    footer{padding:28px;background:#07101a;text-align:center;color:var(--muted);margin-top:40px}
-
-    /* small helpers */
-    .muted-small{font-size:13px;color:var(--muted)}
-
-    /* subtle reveal */
-    .reveal{opacity:0;transform:translateY(18px);transition:all .6s ease}
-    .reveal.visible{opacity:1;transform:none}
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="container">
-    <div class="nav" role="banner">
-      <div class="logo" aria-hidden="false">
-        <!-- simple SVG logo -->
+    <div class="nav">
+      <div class="logo">
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="6" y="6" width="52" height="52" rx="10" fill="url(#g)" />
           <defs>
@@ -145,7 +31,6 @@
           <div class="muted-small">Boxing • Spinning • Yoga</div>
         </div>
       </div>
-
       <nav aria-label="Hoofdnavigatie">
         <ul>
           <li><a href="#about">Over</a></li>
@@ -155,15 +40,10 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-
-      <button class="hamburger" aria-label="Open menu" aria-expanded="false" onclick="toggleMobileMenu()">
-        ☰
-      </button>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false" onclick="toggleMobileMenu()">☰</button>
     </div>
   </header>
-
   <main>
-    <!-- HERO -->
     <section class="hero container" aria-label="Introductie">
       <div class="hero-grid">
         <div class="hero-left">
@@ -175,264 +55,107 @@
             <a class="btn btn-ghost" href="#classes">Bekijk lessen</a>
           </div>
         </div>
-
-        <aside class="hero-right" aria-labelledby="hero-stats">
+        <aside class="hero-right">
           <div id="hero-stats" style="margin-bottom:12px;font-weight:700">Waarom Box N Burn</div>
           <div class="stats">
-            <div class="stat"><h3>0+</h3><div class="muted-small">Actieve leden</div></div>
-            <div class="stat"><h3>0+</h3><div class="muted-small">Wekelijkse lessen</div></div>
-            <div class="stat"><h3>0</h3><div class="muted-small">Ervaren coaches</div></div>
+            <div class="stat"><h3>120+</h3><div class="muted-small">Actieve leden</div></div>
+            <div class="stat"><h3>30+</h3><div class="muted-small">Wekelijkse lessen</div></div>
+            <div class="stat"><h3>5</h3><div class="muted-small">Ervaren coaches</div></div>
           </div>
-          <div style="margin-top:14px;font-size:14px;color:var(--muted)">Klanten beoordelen ons gemiddeld 0/5 probeer een proefles!</div>
+          <div style="margin-top:14px;font-size:14px;color:var(--muted)">Klanten beoordelen ons gemiddeld 4.8/5 – probeer een proefles!</div>
         </aside>
       </div>
     </section>
-
-    <!-- ABOUT -->
     <section id="about" class="wrap container reveal">
       <div class="section-head">
         <h2>Over ons</h2>
         <p class="muted">Gepassioneerde trainers, persoonlijke focus en een team-omgeving. We combineren techniek, conditie en herstel voor elk niveau.</p>
       </div>
       <div class="cards">
-        <div class="card">
-          <h3>Gepersonaliseerde coaching</h3>
-          <p class="muted">Kleine groepen en één-op één coaching, zodat jij veilig en snel vooruitgang boekt.</p>
-        </div>
-        <div class="card">
-          <h3>Veilige studio</h3>
-          <p class="muted">Moderne apparatuur, hygiëne en aandacht voor herstel na elke sessie.</p>
-        </div>
-        <div class="card">
-          <h3>Community</h3>
-          <p class="muted">Workouts die motiveren maak vrienden en train samen.</p>
-        </div>
+        <div class="card"><h3>Gepersonaliseerde coaching</h3><p class="muted">Kleine groepen en één-op één coaching, zodat jij veilig en snel vooruitgang boekt.</p></div>
+        <div class="card"><h3>Veilige studio</h3><p class="muted">Moderne apparatuur, hygiëne en aandacht voor herstel na elke sessie.</p></div>
+        <div class="card"><h3>Community</h3><p class="muted">Workouts die motiveren, maak vrienden en train samen.</p></div>
       </div>
     </section>
-
-    <!-- CLASSES -->
     <section id="classes" class="wrap container reveal">
       <div class="section-head">
         <h2>Onze lessen</h2>
         <p class="muted">Kies wat bij je past — of combineer ze allemaal.</p>
       </div>
       <div class="cards">
-        <article class="card" aria-label="Boxing" tabindex="0">
-          <h3>🥊 Boxing</h3>
-          <p class="muted">Techniek, cardio en sparring drills. Voor alle niveaus van basis tot competition-ready.</p>
-        </article>
-
-        <article class="card" aria-label="Spinning" tabindex="0">
-          <h3>🚴 Spinning</h3>
-          <p class="muted">High intensity ritten met muziek en intervaltrainingen. Verbrand calorieën en verbeter je conditie.</p>
-        </article>
-
-        <article class="card" aria-label="Yoga" tabindex="0">
-          <h3>🧘 Yoga</h3>
-          <p class="muted">Mobility, herstel en ademhaling perfect om balans terug te brengen na zware trainingen.</p>
-        </article>
+        <article class="card" aria-label="Boxing" tabindex="0"><h3>🥊 Boxing</h3><p class="muted">Techniek, cardio en sparring drills. Voor alle niveaus van basis tot competition-ready.</p></article>
+        <article class="card" aria-label="Spinning" tabindex="0"><h3>🚴 Spinning</h3><p class="muted">High intensity ritten met muziek en intervaltrainingen. Verbrand calorieën en verbeter je conditie.</p></article>
+        <article class="card" aria-label="Yoga" tabindex="0"><h3>🧘 Yoga</h3><p class="muted">Mobility, herstel en ademhaling perfect om balans terug te brengen na zware trainingen.</p></article>
       </div>
     </section>
-
-    <!-- PRICING -->
     <section id="pricing" class="wrap container reveal">
       <div class="section-head">
         <h2>Abonnementen</h2>
         <p class="muted">Flexibele tarieven voor verschillende behoeften. Geen verborgen kosten.</p>
       </div>
       <div class="pricing">
-        <div class="price-card">
-          <h3>Losse les</h3>
-          <div class="price">€10</div>
-          <p class="muted">Betaal per les ideaal om ons uit te proberen.</p>
-          <div style="margin-top:12px"><button class="btn btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Boek proefles</button></div>
-        </div>
-
-        <div class="price-card recommended">
-          <div class="ribbon">Aanbevolen</div>
-          <h3>Maandelijks</h3>
-          <div class="price">€40 / maand</div>
-          <p class="muted">Onbeperkte lessen. De populairste keuze voor vaste leden.</p>
-          <div style="margin-top:12px"><button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Word lid</button></div>
-        </div>
-
-        <div class="price-card">
-          <h3>Jaarlijks</h3>
-          <div class="price">€85 / jaar</div>
-          <p class="muted">Beste prijs voor trouwe leden betaald 1x per jaar.</p>
-          <div style="margin-top:12px"><button class="btn btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Meer info</button></div>
-        </div>
+        <div class="price-card"><h3>Losse les</h3><div class="price">€10</div><p class="muted">Betaal per les, ideaal om ons uit te proberen.</p><div style="margin-top:12px"><a class="btn btn-ghost" href="abonnement-los.html">Meer info</a></div></div>
+        <div class="price-card recommended"><div class="ribbon">Aanbevolen</div><h3>Maandelijks</h3><div class="price">€40 / maand</div><p class="muted">Onbeperkte lessen. De populairste keuze voor vaste leden.</p><div style="margin-top:12px"><a class="btn btn-primary" href="abonnement-maand.html">Word lid</a></div></div>
+        <div class="price-card"><h3>Jaarlijks</h3><div class="price">€85 / jaar</div><p class="muted">Beste prijs voor trouwe leden, betaald 1x per jaar.</p><div style="margin-top:12px"><a class="btn btn-ghost" href="abonnement-jaar.html">Meer info</a></div></div>
       </div>
     </section>
-
-    <!-- SCHEDULE -->
     <section id="schedule" class="wrap container reveal">
       <div class="section-head">
         <h2>Wekelijks rooster</h2>
-        <p class="muted">Een greep uit onze vaste lessen actuele rooster staat in de app.</p>
+        <p class="muted">Een greep uit onze vaste lessen, actuele rooster staat in de app.</p>
       </div>
       <div class="schedule">
-        <div class="slot">
-          <strong>Maandag</strong>
-          <div class="muted-small">XX:XX — Les</div>
-          <div class="muted-small">XX:XX — Les</div>
-        </div>
-        <div class="slot">
-          <strong>Dinsdag</strong>
-          <div class="muted-small">XX:XX — Les</div>
-          <div class="muted-small">XX:XX — Les</div>
-        </div>
-        <div class="slot">
-          <strong>Woensdag</strong>
-          <div class="muted-small">XX:XX — Les</div>
-          <div class="muted-small">XX:XX — Les</div>
-        </div>
-        <div class="slot">
-          <strong>Donderdag</strong>
-          <div class="muted-small">XX:XX — Les</div>
-          <div class="muted-small">XX:XX — Les</div>
-        </div>
+        <div class="slot"><strong>Maandag</strong><div class="muted-small">XX:XX — Les</div><div class="muted-small">XX:XX — Les</div></div>
+        <div class="slot"><strong>Dinsdag</strong><div class="muted-small">XX:XX — Les</div><div class="muted-small">XX:XX — Les</div></div>
+        <div class="slot"><strong>Woensdag</strong><div class="muted-small">XX:XX — Les</div><div class="muted-small">XX:XX — Les</div></div>
+        <div class="slot"><strong>Donderdag</strong><div class="muted-small">XX:XX — Les</div><div class="muted-small">XX:XX — Les</div></div>
       </div>
     </section>
-
-    <!-- TESTIMONIALS -->
     <section class="wrap container reveal">
-      <div class="section-head">
-        <h2>Wat onze leden zeggen</h2>
-        <p class="muted">Echte verhalen van echte mensen.</p>
-      </div>
+      <div class="section-head"><h2>Wat onze leden zeggen</h2><p class="muted">Echte verhalen van echte mensen.</p></div>
       <div class="testimonials">
-        <div class="testimonial">
-          <strong>Example.</strong>
-          <p class="muted">"Example Text"</p>
-        </div>
+        <div class="testimonial"><strong>Example</strong><p class="muted">"N/A"</p></div>
       </div>
     </section>
-
-    <!-- FAQ -->
     <section class="wrap container reveal">
-      <div class="section-head">
-        <h2>Veelgestelde vragen</h2>
-      </div>
+      <div class="section-head"><h2>Veelgestelde vragen</h2></div>
       <div class="faq">
-        <details>
-          <summary class="muted-small">Kan ik een proefles nemen?</summary>
-          <div class="muted-small">Ja iedereen kan één proefles boeken. Vul het contactformulier in of bel ons.</div>
-        </details>
-        <details>
-          <summary class="muted-small">Wat moet ik meenemen?</summary>
-          <div class="muted-small">Sportkleding, handdoek en een flesje water. Bokshandschoenen zijn aanwezig om te huren.</div>
-        </details>
-        <details>
-          <summary class="muted-small">Is er parkeergelegenheid?</summary>
-          <div class="muted-small">Ja er is beperkte parkeerruimte en goede openbaar vervoerverbindingen in de buurt.</div>
-        </details>
+        <details><summary class="muted-small">Kan ik een proefles nemen?</summary><div class="muted-small">Ja, iedereen kan één proefles boeken. Vul het contactformulier in of bel ons.</div></details>
+        <details><summary class="muted-small">Wat moet ik meenemen?</summary><div class="muted-small">Sportkleding, handdoek en een flesje water. Bokshandschoenen zijn aanwezig om te huren.</div></details>
+        <details><summary class="muted-small">Is er parkeergelegenheid?</summary><div class="muted-small">Ja, er is beperkte parkeerruimte en goede openbaar vervoerverbindingen in de buurt.</div></details>
       </div>
     </section>
-
-    <!-- CONTACT -->
     <section id="contact" class="wrap container reveal">
-      <div class="section-head">
-        <h2>Contact & inschrijving</h2>
-        <p class="muted">Vul het formulier in en we nemen binnen 24 uur contact op.</p>
-      </div>
-
+      <div class="section-head"><h2>Contact & inschrijving</h2><p class="muted">Vul het formulier in en we nemen binnen 24 uur contact op.</p></div>
       <div class="contact-grid">
         <form class="form" onsubmit="handleSubmit(event)" aria-label="Contactformulier">
-          <label for="name">Naam</label>
-          <input id="name" name="name" type="text" required minlength="2" placeholder="Voor- en achternaam">
-
-          <label for="email">E-mail</label>
-          <input id="email" name="email" type="email" required placeholder="jij@voorbeeld.com">
-
-          <label for="phone">Telefoon (optioneel)</label>
-          <input id="phone" name="phone" type="tel" placeholder="+32 ...">
-
-          <label for="message">Bericht</label>
-          <textarea id="message" name="message" rows="4" placeholder="Ik wil graag een proefles boeken op..." required></textarea>
-
-          <div style="margin-top:12px;display:flex;gap:10px">
-            <button class="btn btn-primary" type="submit">Verstuur</button>
-            <button type="reset" class="btn btn-ghost">Wis</button>
-          </div>
-
+          <label for="name">Naam</label><input id="name" name="name" type="text" required minlength="2" placeholder="Voor- en achternaam">
+          <label for="email">E-mail</label><input id="email" name="email" type="email" required placeholder="jij@voorbeeld.com">
+          <label for="phone">Telefoon (optioneel)</label><input id="phone" name="phone" type="tel" placeholder="+32 ...">
+          <label for="message">Bericht</label><textarea id="message" name="message" rows="4" placeholder="Ik wil graag een proefles boeken op..." required></textarea>
+          <div style="margin-top:12px;display:flex;gap:10px"><button class="btn btn-primary" type="submit">Verstuur</button><button type="reset" class="btn btn-ghost">Wis</button></div>
           <p class="muted-small" style="margin-top:12px">Door te verzenden ga je akkoord met onze <a href="#">privacyverklaring</a>.</p>
         </form>
-
         <aside style="padding:12px;background:var(--card);border-radius:12px;border:1px solid rgba(255,255,255,0.03)">
           <h3>Onze gegevens</h3>
           <p class="muted-small"><strong>Email:</strong> <a href="mailto:info@boxnburn.example">info@boxnburn</a></p>
-          <p class="muted-small"><strong>Telefoon:</strong> N/A</p>
-          <p class="muted-small"><strong>Adres:</strong> N/A</p>
-
+          <p class="muted-small"><strong>Telefoon:</strong> 012 345 6789</p>
+          <p class="muted-small"><strong>Adres:</strong> Fitnessstraat 12, Antwerpen</p>
           <h4 style="margin-top:12px">Openingstijden</h4>
-          <p class="muted-small">Ma–Vr: XX:XX – XX:XX<br>Za–Zo: XX:XX – XX:XX</p>
-
-          <div style="margin-top:14px">
-            <a class="btn btn-ghost" href="#pricing">Bekijk abonnementen</a>
-          </div>
+          <p class="muted-small">Ma–Vr: 08:00 – 21:00<br>Za–Zo: 09:00 – 15:00</p>
+          <div style="margin-top:14px"><a class="btn btn-ghost" href="#pricing">Bekijk abonnementen</a></div>
         </aside>
       </div>
     </section>
-
   </main>
-
   <footer>
     <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div style="display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap">
         <div class="muted-small">© 2025 Box N Burn — Gemaakt door Tristan Vansonhoven</div>
         <div class="muted-small">Volg ons: <a href="#">Instagram</a> • <a href="#">Facebook</a></div>
       </div>
     </div>
   </footer>
-
-  <script>
-    // Mobile nav (simple)
-    function toggleMobileMenu(){
-      const nav = document.querySelector('nav ul');
-      const btn = document.querySelector('.hamburger');
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', !expanded);
-      if(nav.style.display === 'flex') nav.style.display = 'none'; else nav.style.display = 'flex';
-      nav.style.flexDirection = 'column';
-      nav.style.position = 'absolute';
-      nav.style.right = '20px';
-      nav.style.top = '70px';
-      nav.style.background = 'linear-gradient(180deg, rgba(10,11,18,0.95), rgba(10,11,18,0.9))';
-      nav.style.padding = '12px';
-      nav.style.borderRadius = '12px';
-      nav.style.minWidth = '200px';
-    }
-
-    // Simple reveal on scroll
-    const revealEls = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
-    }, {threshold:0.12});
-    revealEls.forEach(el=>io.observe(el));
-
-    // Contact form handling (mock)
-    function handleSubmit(e){
-      e.preventDefault();
-      const form = e.target;
-      const data = {name:form.name.value,email:form.email.value,phone:form.phone.value,message:form.message.value};
-      // In a real site you'd send this to your backend. For demo we show a friendly message.
-      alert('Bedankt ' + data.name + '! We hebben je bericht ontvangen en nemen binnen 24 uur contact op.');
-      form.reset();
-      document.getElementById('contact').scrollIntoView({behavior:'smooth'});
-    }
-
-    // Smooth scroll for internal links
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const href = a.getAttribute('href');
-        if(href.length>1){
-          e.preventDefault();
-          const el = document.querySelector(href);
-          if(el) el.scrollIntoView({behavior:'smooth'});
-        }
-      })
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
