@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boxing • Spinning • Yoga</title>
+  <meta name="description" content="Punch Club — Intensieve bokstraining, spinninglessen en ontspannende yoga. Sluit je vandaag nog aan!" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0e0f1a;
+      --accent:#ff4b4b;
+      --accent-2:#00cfff;
+      --accent-3:#ffcc00;
+      --text:#f5f7fb;
+      --muted:#a3adc2;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Poppins, sans-serif;background:radial-gradient(circle at top, #1c2236, var(--bg));color:var(--text);line-height:1.6;overflow-x:hidden}
+    a{color:inherit;text-decoration:none;transition:0.3s ease}
+    a:hover{color:var(--accent)}
+
+    /* nav */
+    header{position:fixed;top:0;left:0;width:100%;padding:14px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(14,15,26,0.9);backdrop-filter:blur(8px);z-index:1000}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;color:var(--accent)}
+    .logo img{width:40px;height:40px;object-fit:contain}
+    nav ul{list-style:none;display:flex;gap:24px}
+    nav li{position:relative}
+    nav li::after{content:"";position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--accent);transition:0.3s}
+    nav li:hover::after{width:100%}
+
+    .hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:url('assets/hero-bg.jpg') center/cover no-repeat;position:relative}
+    .hero::before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6)}
+    .hero-content{position:relative;z-index:2;max-width:800px;padding:20px;animation:fadeIn 1.5s ease}
+    .hero-content h1{font-size:58px;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px;}
+    .hero-content p{font-size:18px;color:var(--muted);margin-bottom:30px}
+    .btn{padding:14px 26px;border-radius:30px;font-weight:700;border:none;cursor:pointer;transition:0.3s;font-size:15px}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff}
+    .btn-primary:hover{transform:scale(1.05)}
+    .btn-outline{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+
+    section{padding:100px 20px;text-align:center;max-width:1100px;margin:auto;opacity:0;transform:translateY(30px);transition:all 0.8s ease}
+    section.visible{opacity:1;transform:translateY(0)}
+    section h2{font-size:34px;margin-bottom:20px;position:relative;display:inline-block}
+    section h2::after{content:"";width:60%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent-3));position:absolute;left:50%;transform:translateX(-50%);bottom:-10px;border-radius:2px}
+    section p{color:var(--muted);max-width:700px;margin:20px auto}
+
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px}
+    .card{background:rgba(255,255,255,0.03);padding:30px;border-radius:16px;transition:0.3s;box-shadow:0 0 0 transparent}
+    .card:hover{transform:translateY(-6px);box-shadow:0 10px 25px rgba(0,0,0,0.4)}
+    .card h3{margin-bottom:14px;font-size:22px}
+
+    .pricing{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;margin-top:40px}
+    .price-card{flex:1 1 260px;background:rgba(255,255,255,0.05);padding:30px;border-radius:16px;transition:0.3s}
+    .price-card:hover{transform:translateY(-8px)}
+    .price-card h3{margin-bottom:12px}
+    .price-card .price{font-size:26px;font-weight:800;color:var(--accent)}
+
+    footer{background:#11131f;padding:40px;text-align:center;color:var(--muted);margin-top:80px}
+    footer a{color:var(--accent)}
+
+    @media(max-width:768px){
+      .hero-content h1{font-size:36px}
+      header{padding:12px 20px}
+      nav ul{gap:14px}
+    }
+
+    @keyframes fadeIn {
+      from {opacity:0;transform:translateY(20px)}
+      to {opacity:1;transform:translateY(0)}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="assets/logo.png" alt="logo">
+      Box N Burn
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">Over ons</a></li>
+        <li><a href="#classes">Lessen</a></li>
+        <li><a href="#pricing">Abonnementen</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Boxing • Spinning • Yoga</h1>
+      <p>Welkom.</p>
+      <button class="btn btn-primary" onclick="document.location='#contact'">Word lid</button>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>Over ons</h2>
+    <p>Wij zijn niet zomaar een boxing zaak wij zijn getrainde profesionals die jouw willen trainen.</p>
+  </section>
+
+  <section id="classes">
+    <h2>Onze lessen</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Boxing</h3>
+        <p>Van beginner tot expert. Bouw uithoudingsvermogen op, verbeter je reflexen en leer techniek.</p>
+      </div>
+      <div class="card">
+        <h3>Spinning</h3>
+        <p>Duw jezelf tot het uiterste met high intensity ritten en muziek die je hart sneller laat kloppen.</p>
+      </div>
+      <div class="card">
+        <h3>Yoga</h3>
+        <p>Balans en herstel met mobiliteit, mindfulness en rustgevende flows voor een sterk lichaam en geest.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2>Abonnementen</h2>
+    <div class="pricing">
+      <div class="price-card">
+        <h3>Losse les</h3>
+        <div class="price">€10</div>
+        <p>Toegang tot één les. Ideaal om ons uit te proberen.</p>
+      </div>
+      <div class="price-card">
+        <h3>Maandelijks</h3>
+        <div class="price">€40</div>
+        <p>Onbeperkte lessen. Beste keuze voor vaste leden.</p>
+      </div>
+      <div class="price-card">
+        <h3>Jaarlijks</h3>
+        <div class="price">€85</div>
+        <p>Een jaarlijks abbonoment.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:hello@punchclub.example">N/A</a> | Telefoon: +N/A</p>
+    <p>Adres: N/A</p>
+    <p><a class="btn btn-outline" href="N/A?subject=Inschrijving">Stuur een bericht</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Box N Burn Gemaakt door Tristan Vansonhoven.</p>
+  </footer>
+
+  <script>
+    // Scroll animaties
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {threshold:0.2});
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
