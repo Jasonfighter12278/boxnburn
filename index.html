@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abonnementen</title>
+    <title>Abonnementen - Box n Burn</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,23 +17,55 @@
         </nav>
     </header>
 
-    <section id="plans">
-        <h1>Onze Abonnementen</h1>
-        <div class="plan" id="basic">
-            <h2>Basis Abonnement</h2>
-            <p>Prijs: €9,99/maand</p>
-            <p>Of</p>
-            <p>Prijs: €99,99/jaar</p>
-            <p>Kenmerken: Basisfunctionaliteiten voor persoonlijk gebruik.</p>
-            <button class="subscribe" onclick="openModal('basic')">Abonneer nu</button>
+    <section id="hero">
+        <div class="container">
+            <h1>Welkom bij Box n Burn</h1>
+            <p>Het beste fitnesscentrum voor jouw doelen - of je nu wilt afvallen, sterker worden, of je algehele gezondheid verbeteren!</p>
         </div>
-        <div class="plan" id="premium">
-            <h2>Premium Abonnement</h2>
-            <p>Prijs: €19,99/maand</p>
-            <p>Of</p>
-            <p>Prijs: €199,99/jaar</p>
-            <p>Kenmerken: Geavanceerde functies voor professioneel gebruik.</p>
-            <button class="subscribe" onclick="openModal('premium')">Abonneer nu</button>
+    </section>
+
+    <section id="plans">
+        <div class="container">
+            <h2>Onze Abonnementen</h2>
+            <div class="plan" id="basic">
+                <h3>Basis Abonnement</h3>
+                <p class="price">€9,99/maand of €99,99/jaar</p>
+                <p class="features">Basisfunctionaliteiten voor persoonlijk gebruik. Perfect voor beginners die willen trainen op hun eigen tempo.</p>
+                <ul>
+                    <li>Toegang tot alle groepslessen</li>
+                    <li>Maandelijkse voortgangsmonitoring</li>
+                </ul>
+                <button class="subscribe" onclick="openModal('basis')">Abonneer nu</button>
+            </div>
+            <div class="plan" id="premium">
+                <h3>Premium Abonnement</h3>
+                <p class="price">€19,99/maand of €199,99/jaar</p>
+                <p class="features">Geavanceerde functies voor professioneel gebruik. Ideaal voor intensieve training en coaching.</p>
+                <ul>
+                    <li>Onbeperkte toegang tot alle lessen</li>
+                    <li>Individuele coaching sessies</li>
+                    <li>Personalized voedingsadvies</li>
+                </ul>
+                <button class="subscribe" onclick="openModal('premium')">Abonneer nu</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="info">
+        <div class="container">
+            <h2>Waarom Kiezen voor Box n Burn?</h2>
+            <div class="info-item">
+                <h3>Ervaren Coaches</h3>
+                <p>Onze gecertificeerde trainers helpen je elke stap van de weg om jouw fitnessdoelen te bereiken. Ze bieden persoonlijke begeleiding en passen de trainingen aan jouw niveau aan.</p>
+            </div>
+            <div class="info-item">
+                <h3>Modern Apparatuur</h3>
+                <p>Onze studio is uitgerust met de nieuwste fitnessapparatuur voor maximale resultaten. Van krachttraining tot cardio, we hebben alles wat je nodig hebt.</p>
+            </div>
+            <div class="info-item">
+                <h3>Communicatie en Community</h3>
+                <p>Word onderdeel van een gemeenschap van gelijkgestemde mensen. Train samen, motiveer elkaar en haal het meeste uit je workout.</p>
+            </div>
         </div>
     </section>
 
@@ -68,7 +100,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Abonnementen Inc. Alle rechten voorbehouden.</p>
+        <p>&copy; 2025 Box n Burn. Alle rechten voorbehouden.</p>
     </footer>
 
     <script src="scripts.js"></script>
