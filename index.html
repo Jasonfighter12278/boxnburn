@@ -125,7 +125,6 @@
   </header>
 
   <main class="container" id="app">
-    <!-- HERO -->
     <section class="hero" id="home">
       <div class="hero-left">
         <span class="kicker">Word sterker. Voel je beter.</span>
@@ -171,7 +170,6 @@
       </aside>
     </section>
 
-    <!-- LESSONS -->
     <section id="lessen">
       <h2>Lessen & Agenda</h2>
       <p class="muted">Klik op een les om te boeken of een herinnering te downloaden.</p>
@@ -181,30 +179,24 @@
             <tr><th>Dag & Tijd</th><th>Les</th><th>Trainer</th><th>Beschikbaar</th><th></th></tr>
           </thead>
           <tbody id="schedule-body">
-            <!-- rows injected by JS -->
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- INSTRUCTORS -->
     <section id="instructeurs">
       <h2>Onze Instructeurs</h2>
       <div class="instructors" id="instructors-list">
-        <!-- injected -->
       </div>
     </section>
 
-    <!-- PLANS -->
     <section id="abonnementen">
       <h2>Abonnementen</h2>
       <p class="muted">Transparante prijzen. Betaal lokaal of online (placeholder).</p>
       <div class="plans" id="plans-list">
-        <!-- injected -->
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact">
       <h2>Neem contact op</h2>
       <form id="contact-form" class="contact" action="https://formspree.io/f/mdklyleo" method="POST">
@@ -213,7 +205,7 @@
           <input name="email" type="email" placeholder="E-mail" required>
         </div>
         <div class="form-row" style="margin-top:8px">
-          <input name="phone" placeholder="Telefoon">
+          <input name="phone" placeholder="Telefoon" required>
           <select name="plan">
             <option value="">Kies een plan (optioneel)</option>
             <option value="proefles">Proefles</option>
@@ -238,11 +230,9 @@
     </footer>
   </main>
 
-  <!-- Modal booking -->
   <div class="modal-backdrop" id="modal">
     <div class="modal" role="dialog" aria-modal="true" aria-label="Boek les">
       <div id="modal-content">
-        <!-- injected -->
       </div>
       <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end">
         <button class="btn ghost" id="modal-cancel">Annuleer</button>
@@ -252,7 +242,6 @@
   </div>
 
   <script>
-    /* --- Sample data --- */
     const SCHEDULE = [
       {id:1, day:'Maandag', time:'18:00 - 19:00', class:'Bokstraining', trainer:'John Doe', spots:12},
       {id:2, day:'Dinsdag', time:'19:00 - 20:00', class:'Spinning', trainer:'Jane Doe', spots:8},
@@ -274,13 +263,11 @@
       {id:'yearly', title:'Jaar Abonnement', desc:'Onbeperkt + 2 gratis privétrainingen', price:480, period:'jaar'}
     ];
 
-    /* --- Utilities --- */
     const $ = sel => document.querySelector(sel);
     const $$ = sel => Array.from(document.querySelectorAll(sel));
 
     function formatDate(d=new Date()){return d.toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'short'})}
 
-    /* --- Init UI --- */
     function renderSchedule(){
       const tbody = $('#schedule-body'); tbody.innerHTML='';
       SCHEDULE.forEach(item=>{
@@ -326,12 +313,11 @@
       });
     }
 
-    /* --- Booking modal --- */
     const modal = $('#modal');
     const modalContent = $('#modal-content');
     let activeBooking = null;
 
-    function openBook(opts={}){
+    function openBook(opts={}){ 
       if(opts.type==='proefles'){
         modalContent.innerHTML = `
           <h3>Boek Proefles</h3>
@@ -339,6 +325,7 @@
           <label style="display:block;margin-top:8px">Naam<input id="bk-name"></label>
           <label style="display:block;margin-top:8px">E-mail<input id="bk-email" type="email"></label>
           <label style="display:block;margin-top:8px">Kies les<select id="bk-class">${SCHEDULE.map(s=>`<option value='${s.id}'>${s.day} • ${s.time} — ${s.class}</option>`).join('')}</select></label>
+          <label style="display:block;margin-top:8px">Telefoonnummer<input id="bk-phone" placeholder="Je telefoonnummer" required></label>
         `;
         activeBooking = {type:'proefles'};
         showModal();
@@ -353,6 +340,7 @@
         <label style="display:block;margin-top:8px">Je naam<input id="bk-name"></label>
         <label style="display:block;margin-top:8px">E-mail<input id="bk-email" type="email"></label>
         <label style="display:block;margin-top:8px">Aantal plekken<select id="bk-qty">${[1,2,3].map(n=>`<option>${n}</option>`).join('')}</select></label>
+        <label style="display:block;margin-top:8px">Telefoonnummer<input id="bk-phone" placeholder="Je telefoonnummer" required></label>
       `;
       activeBooking = {type:'class', id:item.id};
       showModal();
@@ -366,13 +354,26 @@
       if(!activeBooking){closeModal();return}
       const name = $('#bk-name')?.value || 'Onbekend';
       const email = $('#bk-email')?.value || '';
+      const phone = $('#bk-phone')?.value || ''; 
       if(!email){alert('Geef een geldig e-mailadres');return}
       if(activeBooking.type==='proefles'){
         const classId = Number($('#bk-class').value);
         const item = SCHEDULE.find(s=>s.id===classId);
         if(item.spots<=0){alert('Geen plekken meer');closeModal();return}
-        item.spots -=1; renderSchedule(); alert(`Dank! Proefles geboekt voor ${name} (${email})`);
-        closeModal(); return;
+        item.spots -=1; renderSchedule();
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('phone', phone);
+        formData.append('message', `Proefles geboekt voor ${name}, email: ${email}, telefoon: ${phone}, les: ${item.class}`);
+        fetch('https://formspree.io/f/your-email-endpoint', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.ok ? alert(`Proefles geboekt voor ${name} (${email})`) : alert('Fout bij het versturen van de email'))
+        .catch(() => alert('Er ging iets mis bij het versturen'));
+        closeModal();
+        return;
       }
       const qty = Number($('#bk-qty').value||1);
       const item = SCHEDULE.find(s=>s.id===activeBooking.id);
@@ -380,7 +381,6 @@
       item.spots -= qty; renderSchedule(); closeModal(); alert('Boeking bevestigd — je ontvangt een e-mail (demo).');
     });
 
-    /* --- Event delegation for booking buttons --- */
     document.addEventListener('click', e=>{
       const bookBtn = e.target.closest('[data-book]');
       if(bookBtn){ const id = Number(bookBtn.getAttribute('data-book')); openBook({id}); }
@@ -389,7 +389,6 @@
       const chooseBook = e.target.closest('#cta-book, #open-book'); if(chooseBook){ openBook({type:'proefles'}) }
     });
 
-    /* --- Simple SPA nav behavior --- */
     $$('.nav-links a').forEach(a=>{
       a.addEventListener('click', e=>{
         e.preventDefault(); const target = a.getAttribute('data-page'); history.pushState({page:target},'',`#${target}`); showPage(target);
@@ -397,65 +396,22 @@
     });
 
     function showPage(page){ $$('.nav-links a').forEach(x=>x.classList.remove('active')); $$('.nav-links a').find(a=>a.getAttribute('data-page')===page)?.classList.add('active');
-      $$('#app > section').forEach(s=>s.style.display = s.id===page? 'block':'none'); window.scrollTo({top:0,behavior:'smooth'});
-    }
+      $$('#app > section').forEach(s=>s.style.display = s.id===page? 'block':'none'); window.scrollTo({top:0,behavior:'smooth'});}
 
     window.addEventListener('popstate', ()=>{ const page = location.hash.replace('#','') || 'home'; showPage(page); });
 
-    /* --- Mobile toggle --- */
     $('#mobile-toggle').addEventListener('click', ()=>{
       const nav = document.querySelector('nav'); const expanded = nav.style.display === 'block'; nav.style.display = expanded? '':'block'; $('#mobile-toggle').setAttribute('aria-expanded', !expanded);
     });
 
-    /* --- Contact form handling (Formspree) --- */
     $('#contact-form').addEventListener('submit', e=>{
       e.preventDefault(); const form = e.target; fetch(form.action, {method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
         .then(r=>{ if(r.ok){ alert('Bedankt! We nemen contact op.'); form.reset(); } else { r.json().then(j=>alert(j?.error||'Er ging iets mis')) }})
         .catch(()=>alert('Er ging iets mis bij versturen'));
     });
 
-    /* --- small extras --- */
-    document.getElementById('open-calendar').addEventListener('click', ()=>{
-      const ics = generateICS(); const blob = new Blob([ics],{type:'text/calendar'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href=url; a.download='boxnburn_schedule.ics'; a.click(); URL.revokeObjectURL(url);
-    });
-
-    function generateICS(){
-      let out = 'BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//BoxNBurn//NL\n';
-      SCHEDULE.forEach(s=>{
-        const dt = new Date(); const uid = 'bnv-'+s.id+'-'+Date.now(); out += `BEGIN:VEVENT\nUID:${uid}\nSUMMARY:${s.class} - ${s.trainer}\nDESCRIPTION:Boek via Box N Burn\nDTSTAMP:${formatICS(dt)}\nEND:VEVENT\n`;
-      }); out += 'END:VCALENDAR'; return out;
-    }
-    function formatICS(d){return d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z'}
-
-    /* --- Today panel --- */
-    function renderToday(){ $('#today-date').textContent = formatDate(); const today = new Date().getDay(); const map = {1:'Maandag',2:'Dinsdag',3:'Woensdag',4:'Donderdag',5:'Vrijdag',6:'Zaterdag',0:'Zondag'}; const dayName = map[today]; const todays = SCHEDULE.filter(s=>s.day===dayName); if(!todays.length){ $('#today-schedule').innerHTML='<div class="muted">Geen lessen vandaag</div>'; return } $('#today-schedule').innerHTML = todays.map(s=>`<div><strong>${s.class}</strong> — ${s.time} <span class="small muted">(${s.spots} plekken)</span></div>`).join(''); }
-
-    /* --- Next class indicator --- */
-    function renderNext(){ const next = SCHEDULE.find(s=>s.spots>0) || SCHEDULE[0]; $('#next-class').textContent = `${next.class} — ${next.day} ${next.time}` }
-
-    /* --- News fetch (demo) --- */
-    function fetchNews(){ // placeholder: in production call your CMS
-      const msgs = ['Zomerrooster beschikbaar','Nieuwe spinning fietsen toegevoegd','Proefles korting deze week']; $('#news').textContent = msgs.join(' • ');
-    }
-
-    /* --- Local save for contact demo --- */
-    $('#save-local').addEventListener('click', ()=>{
-      const data = {savedAt: new Date().toISOString(), form: {name:document.querySelector('[name=name]').value}}; localStorage.setItem('bn_contact_sample', JSON.stringify(data)); alert('Form opgeslagen in localStorage (demo)');
-    });
-
-    /* --- Bootstrapping --- */
-    function init(){ renderSchedule(); renderInstructors(); renderPlans(); renderToday(); renderNext(); fetchNews(); showPage(location.hash.replace('#','') || 'home'); }
+    function init(){ renderSchedule(); renderInstructors(); renderPlans(); }
     init();
-
-    /* --- Accessibility: allow Esc to close modal --- */
-    document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeModal() } });
-
-    /* --- Small analytics stub (privacy-friendly) --- */
-    window._bn = window._bn || {events:[]}; function track(e){ window._bn.events.push({name:e,ts:Date.now()}); }
-    ['click','submit'].forEach(ev=>document.addEventListener(ev, ()=>track(ev)));
-
-    /* --- Service worker registration (optional offline) --- */
-    if('serviceWorker' in navigator){ navigator.serviceWorker?.register('/sw.js').catch(()=>{/* ignore */}); }
   </script>
 </body>
 </html>
