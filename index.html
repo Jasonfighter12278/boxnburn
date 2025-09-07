@@ -175,6 +175,10 @@
       font-size: 16px;
     }
 
+    /* Smooth scroll for anchors */
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
 
@@ -223,30 +227,30 @@
     <table class="schedule-table">
       <thead>
         <tr>
-          <td>Les</td>
-          <td>XX:XX - XX:XX</td>
-          <td>Dag</td>
-          <td>Lesgever</td>
+          <th>Les</th>
+          <th>Tijd</th>
+          <th>Dag</th>
+          <th>Trainer</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Les</td>
-          <td>XX:XX - XX:XX</td>
-          <td>Dag</td>
-          <td>Lesgever</td>
+          <td>Bokstraining</td>
+          <td>18:00 - 19:00</td>
+          <td>Maandag</td>
+          <td>John Doe</td>
         </tr>
         <tr>
-          <td>Les</td>
-          <td>XX:XX - XX:XX</td>
-          <td>Dag</td>
-          <td>Lesgever</td>
+          <td>Spinning</td>
+          <td>19:00 - 20:00</td>
+          <td>Dinsdag</td>
+          <td>Jane Doe</td>
         </tr>
         <tr>
-          <td>Les</td>
-          <td>XX:XX - XX:XX</td>
-          <td>Dag</td>
-          <td>Lesgever</td>
+          <td>Yoga</td>
+          <td>08:00 - 09:00</td>
+          <td>Woensdag</td>
+          <td>Emily Smith</td>
         </tr>
       </tbody>
     </table>
@@ -259,21 +263,21 @@
     <div class="instructeurs">
       <div class="instructeur-card">
         <img src="https://via.placeholder.com/150" alt="John Doe">
-        <h3>Instructeur</h3>
-        <p>Lesinfo</p>
-        <p>Info.</p>
+        <h3>John Doe</h3>
+        <p>Bokstraining Expert</p>
+        <p>John is een ervaren bokstrainer die al jaren beginners en gevorderden begeleidt in de ring.</p>
       </div>
       <div class="instructeur-card">
         <img src="https://via.placeholder.com/150" alt="Jane Doe">
-        <h3>Instructeur</h3>
-        <p>Lesinfo</p>
-        <p>Info.</p>
+        <h3>Jane Doe</h3>
+        <p>Spinning Specialist</p>
+        <p>Jane is een dynamische spinning instructeur met een passie voor energieke groepslessen.</p>
       </div>
       <div class="instructeur-card">
         <img src="https://via.placeholder.com/150" alt="Emily Smith">
-        <h3>Instructeur</h3>
-        <p>Lesinfo</p>
-        <p>Info.</p>
+        <h3>Emily Smith</h3>
+        <p>Yoga Guru</p>
+        <p>Emily brengt rust en balans met haar rustige yoga en meditatieklassen.</p>
       </div>
     </div>
   </section>
@@ -285,29 +289,28 @@
     <div class="abonnementen">
       <div class="abonnement-card">
         <h3>Proef Les</h3>
-        <p>Toegang tot een van onze lessen!</p>
-        <div class="price">€10,00</div>
-        <a href="#contact" class="btn btn-primary">Meld je aan</a>
+        <p>1x bokstraining of spinningles.</p>
+        <div class="price">€10,00 / maand</div>
+        <a href="#contact" class="btn btn-ghost">Abonneer</a>
       </div>
       <div class="abonnement-card">
-        <h3>3-Maanden Abonnement</h3>
-        <p>Besparen door je 1 maanden vooruit te betalen.</p>
-        <div class="price">€40,00</div>
-        <a href="#contact" class="btn btn-primary">Meld je aan</a>
+        <h3>Maand Abonnement</h3>
+        <p>3x per week bokstraining, spinningles & yoga.</p>
+        <div class="price">€40,00 / maand</div>
+        <a href="#contact" class="btn btn-ghost">Abonneer</a>
       </div>
       <div class="abonnement-card">
-        <h3>Jaar Abonnement</h3>
-        <p>Het beste aanbod voor 12 maanden toegang!</p>
-        <div class="price">€480,00</div>
-        <a href="#contact" class="btn btn-primary">Meld je aan</a>
+        <h3>Jaarlijks Abonnement</h3>
+        <p>Onbeperkt toegang tot alle lessen + persoonlijke begeleiding.</p>
+        <div class="price">€480,00 / jaar</div>
+        <a href="#contact" class="btn btn-ghost">Abonneer</a>
       </div>
     </div>
   </section>
 
   <section id="contact" class="wrap">
-    <h2 class="section-header">Contact</h2>
-    <p class="muted">Heb je vragen? Neem contact met ons op!</p>
-
+    <h2 class="section-header">Neem Contact op</h2>
+    <p class="muted">We horen graag van je! Vul het formulier in en we nemen snel contact met je op.</p>
     <form class="contact-form">
       <input type="text" name="name" placeholder="Je naam" required />
       <input type="email" name="email" placeholder="Je e-mailadres" required />
