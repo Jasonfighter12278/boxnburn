@@ -70,6 +70,7 @@
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
     input,textarea,select{width:100%;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:#e6eef8}
     textarea{min-height:120px}
+    select{background-color:#000033;color:white}
 
     /* Footer */
     footer{margin-top:28px;text-align:center;color:var(--muted);padding:28px}
@@ -179,6 +180,7 @@
             <tr><th>Dag & Tijd</th><th>Les</th><th>Trainer</th><th>Beschikbaar</th><th></th></tr>
           </thead>
           <tbody id="schedule-body">
+            <!-- rows injected by JS -->
           </tbody>
         </table>
       </div>
@@ -187,6 +189,7 @@
     <section id="instructeurs">
       <h2>Onze Instructeurs</h2>
       <div class="instructors" id="instructors-list">
+        <!-- injected -->
       </div>
     </section>
 
@@ -194,7 +197,9 @@
       <h2>Abonnementen</h2>
       <p class="muted">Transparante prijzen. Betaal lokaal of online (placeholder).</p>
       <div class="plans" id="plans-list">
+        <!-- injected -->
       </div>
+      <button class="btn primary" onclick="window.location.href='#contact';">Kies</button>
     </section>
 
     <section id="contact">
@@ -325,7 +330,6 @@
           <label style="display:block;margin-top:8px">Naam<input id="bk-name"></label>
           <label style="display:block;margin-top:8px">E-mail<input id="bk-email" type="email"></label>
           <label style="display:block;margin-top:8px">Kies les<select id="bk-class">${SCHEDULE.map(s=>`<option value='${s.id}'>${s.day} • ${s.time} — ${s.class}</option>`).join('')}</select></label>
-          <label style="display:block;margin-top:8px">Telefoonnummer<input id="bk-phone" placeholder="Je telefoonnummer" required></label>
         `;
         activeBooking = {type:'proefles'};
         showModal();
@@ -340,7 +344,6 @@
         <label style="display:block;margin-top:8px">Je naam<input id="bk-name"></label>
         <label style="display:block;margin-top:8px">E-mail<input id="bk-email" type="email"></label>
         <label style="display:block;margin-top:8px">Aantal plekken<select id="bk-qty">${[1,2,3].map(n=>`<option>${n}</option>`).join('')}</select></label>
-        <label style="display:block;margin-top:8px">Telefoonnummer<input id="bk-phone" placeholder="Je telefoonnummer" required></label>
       `;
       activeBooking = {type:'class', id:item.id};
       showModal();
@@ -354,26 +357,13 @@
       if(!activeBooking){closeModal();return}
       const name = $('#bk-name')?.value || 'Onbekend';
       const email = $('#bk-email')?.value || '';
-      const phone = $('#bk-phone')?.value || ''; 
       if(!email){alert('Geef een geldig e-mailadres');return}
       if(activeBooking.type==='proefles'){
         const classId = Number($('#bk-class').value);
         const item = SCHEDULE.find(s=>s.id===classId);
         if(item.spots<=0){alert('Geen plekken meer');closeModal();return}
-        item.spots -=1; renderSchedule();
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('email', email);
-        formData.append('phone', phone);
-        formData.append('message', `Proefles geboekt voor ${name}, email: ${email}, telefoon: ${phone}, les: ${item.class}`);
-        fetch('https://formspree.io/f/your-email-endpoint', {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => response.ok ? alert(`Proefles geboekt voor ${name} (${email})`) : alert('Fout bij het versturen van de email'))
-        .catch(() => alert('Er ging iets mis bij het versturen'));
-        closeModal();
-        return;
+        item.spots -=1; renderSchedule(); alert(`Dank! Proefles geboekt voor ${name} (${email})`);
+        closeModal(); return;
       }
       const qty = Number($('#bk-qty').value||1);
       const item = SCHEDULE.find(s=>s.id===activeBooking.id);
@@ -410,7 +400,7 @@
         .catch(()=>alert('Er ging iets mis bij versturen'));
     });
 
-    function init(){ renderSchedule(); renderInstructors(); renderPlans(); }
+    function init(){ renderSchedule(); renderInstructors(); renderPlans(); showPage(location.hash.replace('#','') || 'home'); }
     init();
   </script>
 </body>
