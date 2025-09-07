@@ -1,416 +1,233 @@
 <!doctype html>
 <html lang="nl">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Box N Burn — Boksen • Spinning • Yoga</title>
-  <meta name="description" content="Box N Burn — Intensieve bokstrainingen, energieke spinninglessen en herstellende yoga. Proefles beschikbaar!" />
-
-  <!-- Google Fonts -->
+  <title>Box N Burn</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-
   <style>
     :root {
-      --bg: #111827;
-      --card-bg: rgba(255, 255, 255, 0.1);
+      --bg: #fdfdfd;
+      --card-bg: #ffffffee;
       --accent: #ff4b4b;
       --accent-2: #00cfff;
-      --text: #eef2fb;
-      --muted: #a3adc2;
+      --text: #1a1a1a;
+      --muted: #555;
       --radius: 14px;
-      --max-width: 1200px;
-      --transition: all 0.3s ease;
+      --max-width: 1100px;
+      --transition: all 0.4s ease;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #1a2238, var(--bg));
-      color: var(--text);
-      line-height: 1.6;
-      height: 100%;
+      background: linear-gradient(135deg, #ffeaea, #eaf9ff);
+      color: var(--text); line-height: 1.6; min-height: 100%;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
+    a { color: inherit; text-decoration: none; }
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 16px 0;
-      background: rgba(10, 11, 18, 0.8);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000; padding: 12px 0;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      display: flex; justify-content: space-between; align-items: center;
     }
-
-    .logo {
-      font-weight: 700;
-      color: var(--accent);
-      font-size: 24px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: flex-end;
-      gap: 20px;
-    }
-
-    nav li {
-      position: relative;
-    }
-
-    nav a {
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-weight: 500;
-      color: var(--text);
-      transition: background-color 0.3s;
-    }
-
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    section {
-      padding: 80px 0;
-      text-align: center;
-    }
-
+    .logo { font-weight: 700; color: var(--accent); font-size: 22px; display: flex; align-items: center; gap: 10px; margin-left: 20px; }
+    .logo img { width: 40px; height: 40px; border-radius: 50%; }
+    nav ul { list-style: none; display: flex; gap: 20px; margin-right: 20px; }
+    nav a { padding: 10px 16px; border-radius: 8px; font-weight: 500; transition: var(--transition); }
+    nav a:hover { background: rgba(0,0,0,0.05); }
+    section { display: none; padding: 100px 20px 60px; max-width: var(--max-width); margin: 0 auto; animation: fadeIn 0.6s ease; }
+    section.active { display: block; }
+    @keyframes fadeIn { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
     .hero {
-      height: 90vh;
-      display: grid;
-      place-items: center;
-      position: relative;
-      margin-top: 80px;
-      border-radius: 20px;
-      background: url('https://via.placeholder.com/1200x800') center/cover no-repeat;
-      color: var(--text);
+      height: 85vh; display: flex; align-items: center; justify-content: center; margin-top: 80px;
+      background: url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      border-radius: 20px; position: relative; text-align: center; color: white; padding: 20px;
     }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 20px;
-    }
-
-    .hero h1 {
-      font-size: 50px;
-      font-weight: 700;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text;
-      color: transparent;
-      text-transform: uppercase;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: var(--muted);
-      margin-bottom: 30px;
-    }
-
-    .btn {
-      display: inline-flex;
-      gap: 12px;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 20px;
-      border-radius: 50px;
-      font-weight: 700;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      color: #061022;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
-    }
-
-    .btn-primary:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      color: var(--text);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .abonnementen {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .abonnement-card {
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: var(--radius);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
-
-    .abonnement-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .abonnement-card h3 {
-      font-size: 24px;
-      margin-bottom: 15px;
-      color: var(--accent);
-    }
-
-    .abonnement-card p {
-      font-size: 18px;
-      color: var(--muted);
-      margin-bottom: 15px;
-    }
-
-    .abonnement-card .price {
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    footer {
-      background: #101520;
-      padding: 40px 0;
-      text-align: center;
-      color: var(--muted);
-    }
-
+    .hero::before { content:""; position:absolute; inset:0; background:rgba(0,0,0,0.4); border-radius:20px; }
+    .hero h1 { font-size: 42px; font-weight: 700; background: linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; color:transparent; text-transform: uppercase; z-index: 1; }
+    .hero p { font-size: 18px; color: #f5f5f5; margin: 20px 0; z-index: 1; }
+    .btn { display:inline-block; padding:12px 20px; border-radius:50px; font-weight:700; margin:10px; cursor:pointer; transition:var(--transition); }
+    .btn-primary { background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#fff; }
+    .btn-primary:hover { transform:scale(1.05); }
+    .btn-ghost { border:2px solid #fff; color:#fff; }
+    .btn-ghost:hover { background:rgba(255,255,255,0.2); }
+    .schedule-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    .schedule-table th, .schedule-table td { border: 1px solid #ddd; padding: 12px; text-align: center; }
+    .schedule-table th { background: var(--accent); color: #fff; }
+    .schedule-table tr:nth-child(even) { background: #f9f9f9; }
+    .instructeurs { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 20px; margin-top: 30px; }
+    .instructeur-card { background: var(--card-bg); border-radius: var(--radius); padding: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+    .instructeur-card img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; }
+    .instructeur-card h3 { color: var(--accent); margin-bottom: 10px; }
+    .abonnementen { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
+    .abonnement-card { background: var(--card-bg); padding: 20px; border-radius: var(--radius); box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: center; }
+    .abonnement-card h3 { color: var(--accent); margin-bottom: 10px; }
+    .abonnement-card .price { font-size: 22px; font-weight: 600; margin-top: 10px; }
     .contact-form {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 14px;
-      padding: 40px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .contact-form input, .contact-form textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      background: transparent;
-      color: var(--text);
-    }
-
-    .contact-form button {
-      width: 100%;
-      padding: 14px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      color: #061022;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .contact-form button:hover {
-      transform: scale(1.05);
-    }
-
-    .instructeurs {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .instructeur-card {
-      background: var(--card-bg);
+      max-width: 600px; margin: 0 auto;
+      background: var(--card-bg); padding: 25px;
       border-radius: var(--radius);
-      padding: 20px;
-      text-align: center;
-      flex: 1;
-      min-width: 220px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
-
-    .instructeur-card img {
-      width: 100%;
-      border-radius: 50%;
-      height: 180px;
-      object-fit: cover;
-      margin-bottom: 20px;
+    .contact-form h3 { text-align: center; margin-bottom: 15px; color: var(--accent); }
+    .contact-form input, .contact-form textarea, .contact-form select {
+      width: 100%; padding: 12px; margin: 10px 0;
+      border: 1px solid #ddd; border-radius: 8px; font-size: 15px;
     }
-
-    .instructeur-card h3 {
-      font-size: 24px;
-      margin: 15px 0;
-      color: var(--accent);
+    .contact-form textarea { resize: none; height: 120px; }
+    .contact-form button {
+      width: 100%; padding: 14px; border: none; border-radius: 8px;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color: #fff; font-weight: 700; cursor: pointer;
     }
-
-    .instructeur-card p {
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    .contact-note { font-size: 14px; color: var(--muted); margin-top: 15px; text-align: center; }
+    footer { text-align:center; padding:30px; color: var(--muted); }
   </style>
 </head>
-
 <body>
   <header>
-    <nav class="nav">
-      <div class="logo">
-        <img src="https://i.ibb.co/bj5mBF0t/Box-N-Burn-Algemeen.png" alt="Box N Burn Logo">
-        <span>Box N Burn</span>
-      </div>
+    <div class="logo">
+      <img src="https://i.ibb.co/bj5mBF0t/Box-N-Burn-Algemeen.png" alt="Logo">
+      <span>Box N Burn</span>
+    </div>
+    <nav>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#lessen">Lessen</a></li>
-        <li><a href="#instructeurs">Instructeurs</a></li>
-        <li><a href="#abonnementen">Abonnementen</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" data-page="home">Home</a></li>
+        <li><a href="#" data-page="lessen">Lessen</a></li>
+        <li><a href="#" data-page="instructeurs">Instructeurs</a></li>
+        <li><a href="#" data-page="abonnementen">Abonnementen</a></li>
+        <li><a href="#" data-page="contact">Contact</a></li>
       </ul>
     </nav>
   </header>
-
-  <section id="home" class="hero">
-    <h1>Start je Reis naar een Betere Versie van Jezelf</h1>
-    <p>Met intensieve bokstrainingen, energieke spinninglessen en rustgevende yoga. Alles onder één dak!</p>
-    <div class="hero-ctas">
-      <a href="#abonnementen" class="btn btn-primary">Bekijk Abonnementen</a>
-      <a href="#lessen" class="btn btn-ghost">Bekijk Lessen</a>
+  <section id="home" class="active">
+    <div class="hero">
+      <div>
+        <h1>Ontdek jouw Energie & Kracht</h1>
+        <p>Box, Spin & Ontspan met yoga. Samen bouwen we aan een gelukkigere en gezondere versie van jezelf.</p>
+        <a class="btn btn-primary" data-page="abonnementen">Bekijk Abonnementen</a>
+        <a class="btn btn-ghost" data-page="lessen">Bekijk Lessen</a>
+      </div>
     </div>
   </section>
-
-  <section id="lessen" class="wrap">
-    <h2>Onze Lessen</h2>
+  <section id="lessen">
+    <h2>Agenda & Lessen</h2>
+    <p>Een overzicht van onze wekelijkse trainingen, in de juiste volgorde per dag.</p>
     <table class="schedule-table">
       <thead>
         <tr>
+          <th>Dag</th>
           <th>Les</th>
           <th>Tijd</th>
-          <th>Dag</th>
           <th>Trainer</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Bokstraining</td>
-          <td>18:00 - 19:00</td>
-          <td>Maandag</td>
-          <td>John Doe</td>
-        </tr>
-        <tr>
-          <td>Spinning</td>
-          <td>19:00 - 20:00</td>
-          <td>Dinsdag</td>
-          <td>Jane Doe</td>
-        </tr>
-        <tr>
-          <td>Yoga</td>
-          <td>08:00 - 09:00</td>
-          <td>Woensdag</td>
-          <td>Emily Smith</td>
-        </tr>
+        <tr><td>Maandag</td><td>Bokstraining</td><td>18:00 - 19:00</td><td>John Doe</td></tr>
+        <tr><td>Dinsdag</td><td>Spinning</td><td>19:00 - 20:00</td><td>Jane Doe</td></tr>
+        <tr><td>Woensdag</td><td>Yoga</td><td>08:00 - 09:00</td><td>Emily Smith</td></tr>
+        <tr><td>Donderdag</td><td>Bokstraining</td><td>18:00 - 19:00</td><td>John Doe</td></tr>
+        <tr><td>Vrijdag</td><td>Spinning</td><td>19:00 - 20:00</td><td>Jane Doe</td></tr>
+        <tr><td>Zaterdag</td><td>Yoga</td><td>10:00 - 11:00</td><td>Emily Smith</td></tr>
       </tbody>
     </table>
   </section>
-
-  <section id="instructeurs" class="wrap">
+  <section id="instructeurs">
     <h2>Onze Instructeurs</h2>
     <div class="instructeurs">
       <div class="instructeur-card">
-        <img src="https://via.placeholder.com/150" alt="John Doe">
+        <img src="https://via.placeholder.com/160" alt="John Doe">
         <h3>John Doe</h3>
         <p>Bokstraining Expert</p>
-        <p>John is een ervaren bokstrainer die al jaren beginners en gevorderden begeleidt in de ring.</p>
+        <p>John begeleidt al jaren zowel beginners als gevorderden in de bokswereld.</p>
       </div>
       <div class="instructeur-card">
-        <img src="https://via.placeholder.com/150" alt="Jane Doe">
+        <img src="https://via.placeholder.com/160" alt="Jane Doe">
         <h3>Jane Doe</h3>
         <p>Spinning Specialist</p>
-        <p>Jane is een dynamische spinning instructeur met een passie voor energieke groepslessen.</p>
+        <p>Jane zorgt voor energieke spinninglessen waarin iedereen zich uitgedaagd voelt.</p>
       </div>
       <div class="instructeur-card">
-        <img src="https://via.placeholder.com/150" alt="Emily Smith">
+        <img src="https://via.placeholder.com/160" alt="Emily Smith">
         <h3>Emily Smith</h3>
         <p>Yoga Guru</p>
-        <p>Emily brengt rust en balans met haar rustige yoga en meditatieklassen.</p>
+        <p>Emily brengt balans en rust met haar inspirerende yoga- en meditatiesessies.</p>
       </div>
     </div>
   </section>
-
-  <section id="abonnementen" class="wrap">
+  <section id="abonnementen">
     <h2>Onze Abonnementen</h2>
     <div class="abonnementen">
       <div class="abonnement-card">
         <h3>Proef Les</h3>
-        <p>1x bokstraining of spinningles.</p>
-        <div class="price">€10,00 / maand</div>
-        <a href="#contact" class="btn btn-ghost">Abonneer</a>
+        <p>1 keer bokstraining of spinning.</p>
+        <div class="price">€10,00</div>
       </div>
       <div class="abonnement-card">
         <h3>Maand Abonnement</h3>
-        <p>3x per week bokstraining, spinningles & yoga.</p>
+        <p>3 keer per week toegang tot bokstraining, spinning en yoga.</p>
         <div class="price">€40,00 / maand</div>
-        <a href="#contact" class="btn btn-ghost">Abonneer</a>
       </div>
       <div class="abonnement-card">
-        <h3>Jaarlijks Abonnement</h3>
-        <p>Onbeperkt toegang tot alle lessen + persoonlijke begeleiding.</p>
+        <h3>Jaar Abonnement</h3>
+        <p>Onbeperkte toegang tot alle lessen inclusief persoonlijke begeleiding.</p>
         <div class="price">€480,00 / jaar</div>
-        <a href="#contact" class="btn btn-ghost">Abonneer</a>
       </div>
     </div>
   </section>
-
-  <section id="contact" class="wrap">
+  <section id="contact">
     <h2>Neem Contact op</h2>
-    <form class="contact-form">
-      <input type="text" name="name" placeholder="Je naam" required />
-      <input type="email" name="email" placeholder="Je e-mailadres" required />
-      <textarea name="message" placeholder="Je bericht" rows="6" required></textarea>
+    <form class="contact-form" action="https://formspree.io/f/mdklyleo" method="POST">
+      <h3>Vul je gegevens in</h3>
+      <input type="text" name="name" placeholder="Je naam" required>
+      <input type="email" name="email" placeholder="Je e-mailadres" required>
+      <input type="text" name="phone" placeholder="Telefoonnummer" required>
+      <input type="text" name="subject" placeholder="Onderwerp" required>
+      <select name="plan">
+        <option value="">Kies een plan (optioneel)</option>
+        <option value="proefles">Proefles</option>
+        <option value="maand">Maand Abonnement</option>
+        <option value="jaar">Jaar Abonnement</option>
+      </select>
+      <textarea name="message" placeholder="Je bericht" required></textarea>
       <button type="submit">Verstuur Bericht</button>
+      <p class="contact-note">Alle betalingen gebeuren bij ons ter plaatse, via cash of Payconiq.</p>
     </form>
   </section>
-
   <footer>
     <p>&copy; 2025 Box N Burn | Alle rechten voorbehouden</p>
   </footer>
+  <script>
+    const links = document.querySelectorAll("[data-page]");
+    const sections = document.querySelectorAll("section");
+    links.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const page = link.getAttribute("data-page");
+        sections.forEach(sec => sec.classList.remove("active"));
+        document.getElementById(page).classList.add("active");
+        window.scrollTo(0,0);
+      });
+    });
+    document.querySelector(".contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const form = this;
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          alert("Bedankt! Je bericht is verstuurd.");
+          form.reset();
+        } else {
+          alert("Er ging iets mis, probeer het later opnieuw.");
+        }
+      }).catch(() => {
+        alert("Er ging iets mis, probeer het later opnieuw.");
+      });
+    });
+  </script>
 </body>
-
 </html>
