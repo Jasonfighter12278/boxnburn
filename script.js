@@ -1,6 +1,6 @@
 // Open Modal
 function openModal(plan) {
-    document.getElementById('subscription-modal').style.display = "block";
+    document.getElementById('subscription-modal').style.display = "flex";
     document.getElementById('plan').value = plan;
 }
 
