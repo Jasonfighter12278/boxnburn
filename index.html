@@ -106,7 +106,7 @@
       <img src="https://i.ibb.co/bj5mBF0t/Box-N-Burn-Algemeen.png" alt="Box N Burn logo">
       <div>
         <div class="title">Box N Burn</div>
-        <div class="small muted">Amsterdam — Nieuwe lessen elke week</div>
+        <div class="small muted">Westerlo Nieuwe lessen elke week</div>
       </div>
     </div>
     <nav aria-label="Hoofd navigatie">
@@ -119,7 +119,6 @@
       </div>
     </nav>
     <div class="actions">
-      <button class="btn ghost" id="open-calendar">Kalender</button>
       <button class="btn primary" id="open-book">Boek Nu</button>
       <button class="hamburger" id="mobile-toggle" aria-expanded="false">☰</button>
     </div>
@@ -129,8 +128,8 @@
     <section class="hero" id="home">
       <div class="hero-left">
         <span class="kicker">Word sterker. Voel je beter.</span>
-        <h1>Ontdek jouw Energie & Kracht — Box N Burn</h1>
-        <p>Mix van bokstraining, spinning en yoga — voor beginners en gevorderden. Boek snel, bekijk instructeurs en kies een abonnement.</p>
+        <h1>Ontdek jouw Energie & Kracht Box N Burn</h1>
+        <p>Mix van bokstraining, spinning en yoga voor beginners en gevorderden. Boek snel, bekijk instructeurs en kies een abonnement.</p>
         <div class="cta">
           <button class="btn primary" id="cta-book">Boek een proefles</button>
           <a href="#abonnementen" class="btn ghost">Bekijk abonnementen</a>
@@ -146,7 +145,7 @@
           </div>
           <div class="card">
             <h3>Proefles</h3>
-            <div class="small muted">€10 — direct online boeken</div>
+            <div class="small muted">€10 direct online boeken</div>
             <div style="margin-top:12px"><button class="btn primary" onclick="openBook({type:'proefles'})">Boek proefles</button></div>
           </div>
           <div class="card">
@@ -165,7 +164,7 @@
         </div>
         <div class="card" style="margin-top:12px">
           <h3>Zo vind je ons</h3>
-          <div class="small muted">Adres: Keizersgracht 123, Amsterdam</div>
+          <div class="small muted">Adres: Sint Lambertusstraat 33 B 2260 Westerlo</div>
           <div style="margin-top:12px"><a class="btn ghost" href="https://maps.google.com" target="_blank" rel="noopener">Open in Maps</a></div>
         </div>
       </aside>
@@ -173,7 +172,7 @@
 
     <section id="lessen">
       <h2>Lessen & Agenda</h2>
-      <p class="muted">Klik op een les om te boeken of een herinnering te downloaden.</p>
+      <p class="muted">Klik op een les om te boeken.</p>
       <div class="schedule">
         <table class="schedule-table" aria-live="polite">
           <thead>
@@ -225,13 +224,13 @@
           <button type="submit" class="btn primary">Verstuur bericht</button>
           <button type="button" class="btn ghost" id="save-local">Sla op (voorbeeld)</button>
         </div>
-        <div class="muted" style="margin-top:8px">Alle betalingen gebeuren ter plaatse of via Payconiq / iDEAL. (Online betalingen demo)</div>
+        <div class="muted" style="margin-top:8px">Alle betalingen gebeuren ter plaatse via Paqconiq of Cash.</div>
       </form>
     </section>
 
     <footer>
       <div>&copy; 2025 Box N Burn — Alle rechten voorbehouden</div>
-      <div class="muted">Gemaakt met ❤️ — versie v2</div>
+      <div class="muted">V1</div>
     </footer>
   </main>
 
@@ -248,24 +247,24 @@
 
   <script>
     const SCHEDULE = [
-      {id:1, day:'Maandag', time:'18:00 - 19:00', class:'Bokstraining', trainer:'John Doe', spots:12},
-      {id:2, day:'Dinsdag', time:'19:00 - 20:00', class:'Spinning', trainer:'Jane Doe', spots:8},
-      {id:3, day:'Woensdag', time:'08:00 - 09:00', class:'Yoga', trainer:'Emily Smith', spots:6},
-      {id:4, day:'Donderdag', time:'18:00 - 19:00', class:'Bokstraining', trainer:'John Doe', spots:12},
-      {id:5, day:'Vrijdag', time:'19:00 - 20:00', class:'Spinning', trainer:'Jane Doe', spots:8},
-      {id:6, day:'Zaterdag', time:'10:00 - 11:00', class:'Yoga', trainer:'Emily Smith', spots:6}
+      {id:1, day:'Maandag', time:'18:00 - 19:00', class:'Bokstraining', trainer:'Instructeur', spots:12},
+      {id:2, day:'Dinsdag', time:'19:00 - 20:00', class:'Spinning', trainer:'Instructeur', spots:8},
+      {id:3, day:'Woensdag', time:'08:00 - 09:00', class:'Yoga', trainer:'Instructeur', spots:6},
+      {id:4, day:'Donderdag', time:'18:00 - 19:00', class:'Bokstraining', trainer:'Instructeur', spots:12},
+      {id:5, day:'Vrijdag', time:'19:00 - 20:00', class:'Spinning', trainer:'Instructeur', spots:8},
+      {id:6, day:'Zaterdag', time:'10:00 - 11:00', class:'Yoga', trainer:'Instructeur', spots:6}
     ];
 
     const INSTRUCTORS = [
-      {name:'John Doe', role:'Bokstraining Expert', bio:'Expert in techniek en conditie. Geschikt voor alle niveaus.', img:'https://images.unsplash.com/photo-1603415526960-f7e0328c8b20?auto=format&fit=crop&w=400&q=60'},
-      {name:'Jane Doe', role:'Spinning Specialist', bio:'Energieke lessen met sterke coaching en playlists.', img:'https://images.unsplash.com/photo-1543899341-2b3f5c4f6bde?auto=format&fit=crop&w=400&q=60'},
-      {name:'Emily Smith', role:'Yoga Guru', bio:'Balans, flexibiliteit en mindfulness voor iedereen.', img:'https://images.unsplash.com/photo-1554366754-36755b6c27d7?auto=format&fit=crop&w=400&q=60'}
+      {name:'Instructeur', role:'Rol', bio:'Bio.', img:'https://images.unsplash.com/photo-1603415526960-f7e0328c8b20?auto=format&fit=crop&w=400&q=60'},
+      {name:'Instructeur', role:'Rol', bio:'Bio.', img:'https://images.unsplash.com/photo-1543899341-2b3f5c4f6bde?auto=format&fit=crop&w=400&q=60'},
+      {name:'Instructeur', role:'Rol', bio:'Bio.', img:'https://images.unsplash.com/photo-1554366754-36755b6c27d7?auto=format&fit=crop&w=400&q=60'}
     ];
 
     const PLANS = [
       {id:'trial', title:'Proef Les', desc:'1 les naar keuze', price:10, period:'eenmalig'},
       {id:'monthly', title:'Maand Abonnement', desc:'3x per week onbeperkt toegang tot geselecteerde lessen', price:40, period:'maand'},
-      {id:'yearly', title:'Jaar Abonnement', desc:'Onbeperkt + 2 gratis privétrainingen', price:480, period:'jaar'}
+      {id:'yearly', title:'Jaar Abonnement', desc:'Jaarabonoment', price:480, period:'jaar'}
     ];
 
     const $ = sel => document.querySelector(sel);
