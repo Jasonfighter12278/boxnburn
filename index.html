@@ -3,94 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:image" content="assets/og-hero.jpg">
-    <meta property="og:description" content="Your amazing description goes here!">
-    <meta property="og:title" content="Box n Burn Studio">
-    <title>Box n Burn Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Subscription Plans</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Mobile Navigation -->
     <header>
         <nav>
-            <button id="menu-toggle" class="menu-toggle">Menu</button>
-            <ul id="nav-links" class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#about">About</a></li>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Plans</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <h1>Welcome to Box n Burn</h1>
-        <p>Unleash Your Strength</p>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="service">
-                <h3>Personal Training</h3>
-                <p>Get personalized training plans with our expert coaches. Tailored workouts to achieve your fitness goals.</p>
-            </div>
-            <div class="service">
-                <h3>Group Classes</h3>
-                <p>Join our dynamic group classes for a high-energy workout experience with others!</p>
-            </div>
-            <div class="service">
-                <h3>Nutrition Coaching</h3>
-                <p>Receive dietary guidance to fuel your body and maximize your results.</p>
-            </div>
+    <section id="plans">
+        <h1>Our Subscription Plans</h1>
+        <div class="plan" id="basic">
+            <h2>Proef les.</h2>
+            <p>Price: €10 per time</p>
+            <p>One time lesson.</p>
+            <button class="subscribe" onclick="openModal('basic')">Subscribe</button>
+        </div>
+        <div class="plan" id="premium">
+            <h2>Maand Plan</h2>
+            <p>Price: €80/maand</p>
+            <p>Een keer in de maand betaling voor de lessen.</p>
+            <button class="subscribe" onclick="openModal('premium')">Subscribe</button>
+        </div>
+        <div class="plan" id="pro">
+            <h2>Jaarlijks</h2>
+            <p>Price: $200/jaar</p>
+            <p>Features: Pro features for business use.</p>
+            <button class="subscribe" onclick="openModal('pro')">Subscribe</button>
         </div>
     </section>
 
-    <!-- Pricing Section (No Changes to Original Layout) -->
-    <section id="pricing">
-        <div class="container">
-            <h2>Our Pricing</h2>
-            <div class="pricing-plan">
-                <h3>Basic Package</h3>
-                <p>$19.99/month</p>
-                <ul>
-                    <li>1 Personal Training Session</li>
-                    <li>Access to Group Classes</li>
-                    <li>Basic Nutrition Plan</li>
-                </ul>
-            </div>
-            <div class="pricing-plan">
-                <h3>Pro Package</h3>
-                <p>$49.99/month</p>
-                <ul>
-                    <li>5 Personal Training Sessions</li>
-                    <li>Unlimited Group Classes</li>
-                    <li>Advanced Nutrition Plan</li>
-                    <li>Weekly Check-ins</li>
-                </ul>
-            </div>
-            <div class="pricing-plan">
-                <h3>Elite Package</h3>
-                <p>$99.99/month</p>
-                <ul>
-                    <li>10 Personal Training Sessions</li>
-                    <li>Unlimited Group Classes</li>
-                    <li>Custom Nutrition Plan</li>
-                    <li>Daily Check-ins</li>
-                    <li>Priority Scheduling</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form Section -->
     <section id="contact">
         <h2>Get in Touch</h2>
-        <form id="contact-form">
+        <form id="contact-form" action="send_email.php" method="POST">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -104,6 +55,21 @@
         </form>
         <div id="form-status"></div>
     </section>
+
+    <div id="subscription-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Subscription</h2>
+            <form id="subscription-form" action="subscribe.php" method="POST">
+                <input type="hidden" name="plan" id="plan-input">
+                <label for="plan-name">Name:</label>
+                <input type="text" id="plan-name" name="name" required>
+                <label for="plan-email">Email:</label>
+                <input type="email" id="plan-email" name="email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
