@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscription Plans</title>
+    <title>Abonnementen</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,66 +11,66 @@
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Plans</a></li>
+                <li><a href="#">Abonnementen</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="plans">
-        <h1>Our Subscription Plans</h1>
+        <h1>Onze Abonnementen</h1>
         <div class="plan" id="basic">
-            <h2>Proef les.</h2>
-            <p>Price: €10 per time</p>
-            <p>One time lesson.</p>
-            <button class="subscribe" onclick="openModal('basic')">Subscribe</button>
+            <h2>Basis Abonnement</h2>
+            <p>Prijs: €9,99/maand</p>
+            <p>Of</p>
+            <p>Prijs: €99,99/jaar</p>
+            <p>Kenmerken: Basisfunctionaliteiten voor persoonlijk gebruik.</p>
+            <button class="subscribe" onclick="openModal('basic')">Abonneer nu</button>
         </div>
         <div class="plan" id="premium">
-            <h2>Maand Plan</h2>
-            <p>Price: €80/maand</p>
-            <p>Een keer in de maand betaling voor de lessen.</p>
-            <button class="subscribe" onclick="openModal('premium')">Subscribe</button>
+            <h2>Premium Abonnement</h2>
+            <p>Prijs: €19,99/maand</p>
+            <p>Of</p>
+            <p>Prijs: €199,99/jaar</p>
+            <p>Kenmerken: Geavanceerde functies voor professioneel gebruik.</p>
+            <button class="subscribe" onclick="openModal('premium')">Abonneer nu</button>
         </div>
-        <div class="plan" id="pro">
-            <h2>Jaarlijks</h2>
-            <p>Price: $200/jaar</p>
-            <p>Features: Pro features for business use.</p>
-            <button class="subscribe" onclick="openModal('pro')">Subscribe</button>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Get in Touch</h2>
-        <form id="contact-form" action="send_email.php" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-
-            <button type="submit">Send</button>
-        </form>
-        <div id="form-status"></div>
     </section>
 
     <div id="subscription-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Subscription</h2>
-            <form id="subscription-form" action="subscribe.php" method="POST">
-                <input type="hidden" name="plan" id="plan-input">
-                <label for="plan-name">Name:</label>
-                <input type="text" id="plan-name" name="name" required>
-                <label for="plan-email">Email:</label>
-                <input type="email" id="plan-email" name="email" required>
-                <button type="submit">Subscribe</button>
+            <h2>Abonnement Kiezen</h2>
+            <form id="subscription-form" action="https://formspree.io/f/mnqokgzw" method="POST">
+                <label for="name">Naam:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="plan">Kies je abonnement:</label>
+                <select id="plan" name="plan">
+                    <option value="basis_maand">Basis Abonnement - Maandelijks (€9,99)</option>
+                    <option value="basis_jaar">Basis Abonnement - Jaarlijks (€99,99)</option>
+                    <option value="premium_maand">Premium Abonnement - Maandelijks (€19,99)</option>
+                    <option value="premium_jaar">Premium Abonnement - Jaarlijks (€199,99)</option>
+                </select>
+
+                <label for="payment">Betalingswijze:</label>
+                <select id="payment" name="payment">
+                    <option value="credit_card">Creditcard</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+
+                <button type="submit" class="submit">Verstuur</button>
             </form>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2025 Abonnementen Inc. Alle rechten voorbehouden.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
