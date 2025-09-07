@@ -363,7 +363,29 @@
         const item = SCHEDULE.find(s=>s.id===classId);
         if(item.spots<=0){alert('Geen plekken meer');closeModal();return}
         item.spots -=1; renderSchedule(); alert(`Dank! Proefles geboekt voor ${name} (${email})`);
-        closeModal(); return;
+        
+        // Submit booking to Formspree
+        fetch('https://formspree.io/f/mldwawvd', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            class: item.class,
+            day: item.day,
+            time: item.time
+          })
+        }).then(response => {
+          if (response.ok) {
+            alert('Proefles geboekt! We nemen contact op.');
+          } else {
+            alert('Er ging iets mis bij het boeken.');
+          }
+        });
+        closeModal();
+        return;
       }
       const qty = Number($('#bk-qty').value||1);
       const item = SCHEDULE.find(s=>s.id===activeBooking.id);
