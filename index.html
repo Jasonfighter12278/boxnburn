@@ -19,10 +19,12 @@
       --radius: 14px;
       --max-width: 1200px;
     }
+
     * {
       box-sizing: border-box;
     }
-    html, body {
+
+    body, html {
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
@@ -31,18 +33,23 @@
       background: var(--bg);
       scroll-behavior: smooth;
     }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 0;
+      padding: 20px;
       border-bottom: 1px solid var(--muted);
+      max-width: var(--max-width);
+      margin: 0 auto;
     }
+
     header h1 {
       font-size: 2rem;
       margin: 0;
       font-weight: 800;
     }
+
     nav a {
       color: var(--text);
       margin: 0 15px;
@@ -50,33 +57,72 @@
       font-weight: 600;
       transition: color 0.3s ease;
     }
+
     nav a:hover {
       color: var(--accent);
     }
+
     .content {
       text-align: center;
-      margin-top: 50px;
+      margin-top: 40px;
     }
+
     .section {
-      padding: 60px 0;
+      padding: 80px 0;
     }
-    .lesson-card, .form-card {
+
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .lesson-card, .form-card, .pricing-card {
       background: var(--card);
       padding: 20px;
       margin-bottom: 20px;
       border-radius: var(--radius);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease-in-out;
+      max-width: 900px;
+      margin: 20px auto;
     }
-    .lesson-card:hover, .form-card:hover {
+
+    .lesson-card:hover, .form-card:hover, .pricing-card:hover {
       transform: scale(1.05);
     }
-    .lesson-card h2, .form-card h2 {
+
+    .lesson-card h2, .form-card h2, .pricing-card h2 {
       margin-top: 0;
     }
-    .lesson-card p {
+
+    .lesson-card p, .pricing-card p {
       margin: 15px 0;
     }
+
+    .pricing-card {
+      display: inline-block;
+      width: 280px;
+      margin: 20px;
+      text-align: center;
+      background: var(--card);
+      transition: transform 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: scale(1.05);
+    }
+
+    .pricing-card .price {
+      font-size: 2rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .pricing-card .plan-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
     .form-input {
       margin-bottom: 15px;
       padding: 10px;
@@ -86,10 +132,12 @@
       background: var(--glass);
       color: var(--text);
     }
+
     .form-input:focus {
       border-color: var(--accent);
       outline: none;
     }
+
     .form-submit {
       background: var(--accent);
       color: white;
@@ -99,46 +147,27 @@
       cursor: pointer;
       transition: background 0.3s ease;
     }
+
     .form-submit:hover {
       background: var(--accent-2);
     }
+
     .footer {
       text-align: center;
       margin-top: 40px;
       font-size: 0.8rem;
       color: var(--muted);
     }
-
-    /* Simple Background Animation */
-    .bg-animation {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, #ff4b4b, #00cfff);
-      background-size: 400% 400%;
-      animation: gradient 10s ease infinite;
-      z-index: -1;
-    }
-
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
   </style>
 </head>
 <body>
-  <!-- Background Animation -->
-  <div class="bg-animation"></div>
 
   <header>
     <h1>Box N Burn</h1>
     <nav>
       <a href="#home">Home</a>
       <a href="#lessons">Lessons</a>
+      <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -171,6 +200,30 @@
     </section>
   </div>
 
+  <div id="pricing" class="content">
+    <section class="section">
+      <h2>Subscription Plans</h2>
+      <div class="pricing-card">
+        <h3 class="plan-name">Basic Plan</h3>
+        <p class="price">€29 / Month</p>
+        <p>Access to 3 classes per week (Boxing or Spinning)</p>
+        <button class="form-submit">Sign Up</button>
+      </div>
+      <div class="pricing-card">
+        <h3 class="plan-name">Premium Plan</h3>
+        <p class="price">€49 / Month</p>
+        <p>Unlimited classes including Yoga</p>
+        <button class="form-submit">Sign Up</button>
+      </div>
+      <div class="pricing-card">
+        <h3 class="plan-name">VIP Plan</h3>
+        <p class="price">€79 / Month</p>
+        <p>All access, plus personal training sessions</p>
+        <button class="form-submit">Sign Up</button>
+      </div>
+    </section>
+  </div>
+
   <div id="contact" class="content">
     <section class="section">
       <h2>Contact Us</h2>
@@ -191,7 +244,6 @@
   </footer>
 
   <script>
-    // Contact Form Validation
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', function(event) {
       event.preventDefault();
